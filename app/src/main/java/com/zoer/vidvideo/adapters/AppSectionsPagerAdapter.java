@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.zoer.vidvideo.fragments.DummySectionTabFragment.DummySectionFragment;
-import com.zoer.vidvideo.fragments.NewTabFragment.NewRecyclerViewFragment;
+import com.zoer.vidvideo.fragments.NewTabFragment.FeaturedRecyclerViewFragment;
 
 public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -20,7 +20,7 @@ public class AppSectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 // The first section of the app is the most interesting -- it offers
                 // a launchpad into the other demonstrations in this example application.
-                return new NewRecyclerViewFragment();
+                return new FeaturedRecyclerViewFragment();
 
             default:
                 // The other sections of the app are dummy placeholders.

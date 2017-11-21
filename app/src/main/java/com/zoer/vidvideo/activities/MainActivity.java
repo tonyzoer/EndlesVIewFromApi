@@ -18,26 +18,18 @@ package com.zoer.vidvideo.activities;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.zoer.vidvideo.R;
 import com.zoer.vidvideo.adapters.AppSectionsPagerAdapter;
-import com.zoer.vidvideo.fragments.NewTabFragment.NewRecyclerViewFragment;
+import com.zoer.vidvideo.fragments.NewTabFragment.FeaturedRecyclerViewFragment;
 
 import org.jetbrains.annotations.NotNull;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener, NewRecyclerViewFragment.OnFragmentInteractionListener {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener, FeaturedRecyclerViewFragment.OnFragmentInteractionListener {
 
     AppSectionsPagerAdapter mAppSectionsPagerAdapter;
 
