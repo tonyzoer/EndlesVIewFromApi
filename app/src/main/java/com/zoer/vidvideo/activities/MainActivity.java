@@ -25,7 +25,7 @@ import android.support.v4.view.ViewPager;
 
 import com.zoer.vidvideo.R;
 import com.zoer.vidvideo.adapters.AppSectionsPagerAdapter;
-import com.zoer.vidvideo.fragments.NewTabFragment.FeaturedRecyclerViewFragment;
+import com.zoer.vidvideo.fragments.FeaturedTabFragment.FeaturedRecyclerViewFragment;
 
 import org.jetbrains.annotations.NotNull;
 

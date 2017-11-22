@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zoer.vidvideo.fragments.NewTabFragment.FeaturedRecyclerViewFragment">
+    tools:context="com.zoer.vidvideo.fragments.FeaturedTabFragment.FeaturedRecyclerViewFragment">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/new_vid_video_recycler"
+        android:id="@+id/vid_video_recycler"
         android:layout_height="match_parent"
         android:layout_width="match_parent" />
 </FrameLayout>
