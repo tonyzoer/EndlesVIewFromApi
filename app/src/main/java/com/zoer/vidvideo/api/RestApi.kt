@@ -9,7 +9,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
  */
 class RestApi {
 
-    private val redditApi: VidVideoApi
+    private val VidMeApi: VidVideoApi
 
     init {
         val retrofit = Retrofit.Builder()
@@ -17,18 +17,26 @@ class RestApi {
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build()
 
-        redditApi = retrofit.create(VidVideoApi::class.java)
+        VidMeApi = retrofit.create(VidVideoApi::class.java)
     }
 
-    fun getHot(offset: String="", limit: String=""): Call<VidMeVideosResponse> {
-        return redditApi.getTopHot(offset, limit)
+    fun getHot(offset: String = "", limit: String = ""): Call<VidMeVideosResponse> {
+        return VidMeApi.getTopHot(offset, limit)
     }
 
-    fun getFeatured(offset: String="", limit: String=""): Call<VidMeVideosResponse> {
-        return redditApi.getTopFeatured(offset, limit)
+    fun getFeatured(offset: String = "", limit: String = ""): Call<VidMeVideosResponse> {
+        return VidMeApi.getTopFeatured(offset, limit)
     }
 
-    fun getFeed(offset: String="", limit: String="", accessToken: String = ""): Call<VidMeVideosResponse> {
-        return redditApi.getTopFeed(offset, limit, accessToken)
+    fun getFeed(offset: String = "", limit: String = "", accessToken: String = ""): Call<VidMeVideosResponse> {
+        return VidMeApi.getTopFeed(offset, limit, accessToken)
+    }
+
+    fun getApp(auth: String): Call<VidMeAplicationResponse> {
+        return VidMeApi.authcheck(auth)
+    }
+
+    fun getUser(username: String, password: String): Call<VidMeUserResponse> {
+        return VidMeApi.authCreate(username, password)
     }
 }

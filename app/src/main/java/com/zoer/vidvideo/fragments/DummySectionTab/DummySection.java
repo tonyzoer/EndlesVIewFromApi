@@ -1,4 +1,4 @@
-package com.zoer.vidvideo.fragments.DummySectionTabFragment;
+package com.zoer.vidvideo.fragments.DummySectionTab;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.zoer.vidvideo.R;
 
-public class DummySectionFragment extends Fragment {
+public class DummySection extends Fragment {
 
     public static final String ARG_SECTION_NUMBER = "section_number";
 

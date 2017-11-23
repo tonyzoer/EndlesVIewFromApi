@@ -1,15 +1,17 @@
 package com.zoer.vidvideo.adapters
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import com.zoer.vidvideo.R
+import com.zoer.vidvideo.activities.VideoActivity
 import com.zoer.vidvideo.commons.extensions.inflate
 import com.zoer.vidvideo.commons.extensions.loadImg
 import com.zoer.vidvideo.models.VidVideoModel
-import com.zoer.vidvideo.models.VidVideosModel
-import kotlinx.android.synthetic.main.vid_video_item.view.*
+import kotlinx.android.synthetic.main.item_vid_video.view.*
 
 class VidVideosAdapter() : RecyclerView.Adapter<VidVideosAdapter.VideoHolder>() {
     private var videos: ArrayList<VidVideoModel> = ArrayList()
@@ -27,7 +29,7 @@ class VidVideosAdapter() : RecyclerView.Adapter<VidVideosAdapter.VideoHolder>() 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoHolder {
-        val inflatedView = parent.inflate(R.layout.vid_video_item, false)
+        val inflatedView = parent.inflate(R.layout.item_vid_video, false)
         return VideoHolder(inflatedView)
     }
 
@@ -56,12 +58,13 @@ class VidVideosAdapter() : RecyclerView.Adapter<VidVideosAdapter.VideoHolder>() 
             view.video_preview.loadImg("https://api.vid.me/video/${video.id}/thumbnail")
         }
 
-        override fun onClick(p0: View?) {
-            //TODO(Implement showing video from url model.videoUrl)
+        override fun onClick(p0: View) {
+
         }
 
 
     }
+
 
 
 }

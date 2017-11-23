@@ -25,14 +25,16 @@ import android.support.v4.view.ViewPager;
 
 import com.zoer.vidvideo.R;
 import com.zoer.vidvideo.adapters.AppSectionsPagerAdapter;
-import com.zoer.vidvideo.fragments.FeaturedTabFragment.FeaturedRecyclerViewFragment;
+import com.zoer.vidvideo.features.VidMeApplicationManager;
+import com.zoer.vidvideo.fragments.FeaturedTab.FeaturedVideosTab;
+import com.zoer.vidvideo.fragments.Login.Login;
 
 import org.jetbrains.annotations.NotNull;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener, FeaturedRecyclerViewFragment.OnFragmentInteractionListener {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener, FeaturedVideosTab.OnFragmentInteractionListener, Login.OnFragmentInteractionListener {
 
     AppSectionsPagerAdapter mAppSectionsPagerAdapter;
-
+    private VidMeApplicationManager appManager=new VidMeApplicationManager();
     ViewPager mViewPager;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         // Create the adapter that will return a fragment for each of the three primary sections
         // of the app.
-        mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager());
+        mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager(),this);
 
         // Set up the action bar.
         final ActionBar actionBar = getActionBar();
@@ -77,6 +79,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                             .setText(mAppSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
+
+
     }
 
     @Override
@@ -97,6 +101,5 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     public void onFragmentInteraction(@NotNull Uri uri) {
 
     }
-
 
 }

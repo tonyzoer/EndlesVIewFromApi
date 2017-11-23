@@ -9,6 +9,8 @@
     <string name="demo_external_activity">Demo External Activity</string>
     <string name="demo_collection">Demo Collection</string>
     <string name="login">Login</string>
+    <string name="key">atEjxTxe74DZkbyiE3feekupDkQNgnI0</string>
+    <string name="secret">47Vi5WEz0XYOY9Hjr9cTGc70llNKUeBZptY8JjAd</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

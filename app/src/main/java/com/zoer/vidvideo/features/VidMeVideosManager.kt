@@ -1,4 +1,4 @@
-package com.zoer.vidvideo.fragments
+package com.zoer.vidvideo.features
 
 import android.util.Log
 import com.zoer.vidvideo.api.RestApi
@@ -10,7 +10,7 @@ import rx.Observable
 /**
  * Created by mafio on 11/21/2017.
  */
-class VidVideosManager(private val api: RestApi = RestApi()) {
+class VidMeVideosManager(private val api: RestApi = RestApi()) {
     fun getVideos(offset: Int = 0, limit: Int = 10, tabtype: TabType = TabType.FEATURED, accessToken: String = ""): Observable<VidVideosModel> {
         return Observable.create { subscriber ->
 
@@ -23,10 +23,9 @@ class VidVideosManager(private val api: RestApi = RestApi()) {
 
             //TODO try to remove "?"
             if (response.isSuccessful) {
-                Log.d("LUUUUL", response.body().toString())
                 val dataResponse = response.body()!!
                 val videos = dataResponse.videos.map {
-                    VidVideoModel(it.video_id, it.title, it.thumbnail, it.url, it.score)
+                    VidVideoModel(it.video_id, it.title, it.thumbnail, it.complete_url, it.score)
                 }
                 val vidVideos = VidVideosModel(dataResponse.page.offset, dataResponse.page.limit, videos)
                 subscriber.onNext(vidVideos)

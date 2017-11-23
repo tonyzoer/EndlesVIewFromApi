@@ -1,4 +1,4 @@
-package com.zoer.vidvideo.features
+package com.zoer.vidvideo.features.listeners
 
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
