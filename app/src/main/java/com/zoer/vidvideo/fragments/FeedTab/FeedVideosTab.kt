@@ -33,6 +33,6 @@ class FeedVideosTab:VidVideoTabRecyclerViewFragment() {
     companion object {
         val TAG = "FeedTab"
 
-
     }
+
 }

@@ -28,6 +28,11 @@ class LoginRootFragment : Fragment() {
         return root
     }
 
+    fun onLogOut(){
+        val ft= fragmentManager.beginTransaction()
+        ft.replace(R.id.root_frame,Login.newInstance())
+        ft.commit()
+    }
 
     companion object {
         fun newInstance(): LoginRootFragment {

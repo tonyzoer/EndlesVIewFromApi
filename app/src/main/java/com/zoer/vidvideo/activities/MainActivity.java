@@ -105,6 +105,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     private void logout() {
         getSharedPreferences("pref", Context.MODE_PRIVATE).edit().remove("token").apply();
+        mAppSectionsPagerAdapter.onLogOut();
     }
 
 
