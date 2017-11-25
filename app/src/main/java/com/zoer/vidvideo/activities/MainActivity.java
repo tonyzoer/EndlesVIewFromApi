@@ -72,6 +72,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 actionBar.setSelectedNavigationItem(position);
             }
         });
+        mViewPager.setOffscreenPageLimit(3);
 
         // For each of the sections in the app, add a tab to the action bar.
         for (int i = 0; i < mAppSectionsPagerAdapter.getCount(); i++) {

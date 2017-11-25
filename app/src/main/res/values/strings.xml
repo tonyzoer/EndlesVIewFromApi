@@ -1,18 +1,14 @@
 <resources>
-    <string name="app_name">VidVideo</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="app_name">Vid Me</string>
+    <string name="title_activity_main">Vid me</string>
     <string name="action_settings">Settings</string>
+
+    <!--Dummy-->
     <string name="section_format">Hello World from section: %1$d</string>
-
     <string name="dummy_section_text">Section %1d is just a dummy section.</string>
-
     <string name="demo_external_activity">Demo External Activity</string>
     <string name="demo_collection">Demo Collection</string>
-    <string name="login">Login</string>
-    <string name="key">atEjxTxe74DZkbyiE3feekupDkQNgnI0</string>
-    <string name="secret">47Vi5WEz0XYOY9Hjr9cTGc70llNKUeBZptY8JjAd</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
     <string name="logout">Logout</string>
 </resources>
