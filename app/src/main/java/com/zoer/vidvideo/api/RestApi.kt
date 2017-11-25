@@ -24,8 +24,8 @@ class RestApi {
         return VidMeApi.getTopHot(offset, limit)
     }
 
-    fun getFeatured(offset: String = "", limit: String = ""): Call<VidMeVideosResponse> {
-        return VidMeApi.getTopFeatured(offset, limit)
+    fun getFeatured(offset: String = "", limit: String = "",accessToken: String = ""): Call<VidMeVideosResponse> {
+        return VidMeApi.getTopFeatured(offset, limit,accessToken)
     }
 
     fun getFeed(offset: String = "", limit: String = "", accessToken: String = ""): Call<VidMeVideosResponse> {

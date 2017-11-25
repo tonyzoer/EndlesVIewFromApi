@@ -7,7 +7,7 @@ data class VidMeVideosResponse(val status: Boolean, val page: Page, val videos: 
 
 data class Page(val total: Int, val limit: Int, val offset: Int)
 
-data class Video(val video_id: String, val complete_url: String, val title: String, val thumbnail: String, val score: Int)
+data class Video(val video_id: String, val complete_url: String, val complete: String, val title: String, val thumbnail: String, val score: Int)
 
 data class VidMeAplicationResponse(val status: Boolean, val application: Application)
 

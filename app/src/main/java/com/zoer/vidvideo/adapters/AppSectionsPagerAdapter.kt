@@ -5,12 +5,13 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.view.PagerAdapter
 
 import com.zoer.vidvideo.fragments.DummySectionTab.DummySection
 import com.zoer.vidvideo.fragments.FeaturedTab.FeaturedVideosTab
 import com.zoer.vidvideo.fragments.FeedTab.FeedVideosTab
 import com.zoer.vidvideo.fragments.HotTab.HotVidVideosTab
-import com.zoer.vidvideo.fragments.Login.Login
+import com.zoer.vidvideo.fragments.Login.LoginRootFragment
 
 class AppSectionsPagerAdapter(fm: FragmentManager, val context: Context) : FragmentPagerAdapter(fm) {
 
@@ -18,15 +19,15 @@ class AppSectionsPagerAdapter(fm: FragmentManager, val context: Context) : Fragm
         return when (i) {
             0 -> FeaturedVideosTab()
             1 -> HotVidVideosTab()
-            2 -> {val token=context.getSharedPreferences("pref", Context.MODE_PRIVATE).getString("token", "token")
+            2 -> {
+                val token = context.getSharedPreferences("pref", Context.MODE_PRIVATE).getString("token", "token")
                 if (!token.equals("token")) {
                     FeedVideosTab()
                 } else {
-                    Login()
+                    LoginRootFragment.newInstance()
                 }
             }
             else -> {
-                // The other sections of the app are dummy placeholders.
                 val fragment = DummySection()
                 val args = Bundle()
                 args.putInt(DummySection.ARG_SECTION_NUMBER, i + 1)
@@ -49,5 +50,12 @@ class AppSectionsPagerAdapter(fm: FragmentManager, val context: Context) : Fragm
                 "NEW ONE"
             }
         }
+    }
+
+    override fun getItemPosition(`object`: Any?): Int {
+        return PagerAdapter.POSITION_NONE
+    }
+    interface LoginTabFragmentListener {
+        fun onSwitchToFeedTab()
     }
 }

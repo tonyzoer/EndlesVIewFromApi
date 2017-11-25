@@ -18,10 +18,14 @@ package com.zoer.vidvideo.activities;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.zoer.vidvideo.R;
 import com.zoer.vidvideo.adapters.AppSectionsPagerAdapter;
@@ -34,7 +38,7 @@ import org.jetbrains.annotations.NotNull;
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener, FeaturedVideosTab.OnFragmentInteractionListener, Login.OnFragmentInteractionListener {
 
     AppSectionsPagerAdapter mAppSectionsPagerAdapter;
-    private VidMeApplicationManager appManager=new VidMeApplicationManager();
+    private VidMeApplicationManager appManager = new VidMeApplicationManager();
     ViewPager mViewPager;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +47,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
         // Create the adapter that will return a fragment for each of the three primary sections
         // of the app.
-        mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager(),this);
+        mAppSectionsPagerAdapter = new AppSectionsPagerAdapter(getSupportFragmentManager(), this);
 
         // Set up the action bar.
         final ActionBar actionBar = getActionBar();
@@ -84,6 +88,28 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()){
+//        case R.id.action_login:login();return true;
+        case R.id.action_logout:logout();return true;
+        default: return super.onOptionsItemSelected(item);
+    }
+    }
+
+    private void logout() {
+        getSharedPreferences("pref", Context.MODE_PRIVATE).edit().remove("token").apply();
+    }
+
+
+
+    @Override
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
     }
 
@@ -99,7 +125,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     @Override
     public void onFragmentInteraction(@NotNull Uri uri) {
+        String[] frags= uri.toString().split("-");
+        if (frags[0].equals("login")){
+            if(frags[1].equals("feed")){
 
+            }
+        }
     }
 
 }

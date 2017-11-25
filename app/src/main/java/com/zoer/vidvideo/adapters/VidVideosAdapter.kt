@@ -1,13 +1,9 @@
 package com.zoer.vidvideo.adapters
 
-import android.content.Intent
 import android.support.v7.widget.RecyclerView
-import android.util.Log
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import com.zoer.vidvideo.R
-import com.zoer.vidvideo.activities.VideoActivity
 import com.zoer.vidvideo.commons.extensions.inflate
 import com.zoer.vidvideo.commons.extensions.loadImg
 import com.zoer.vidvideo.models.VidVideoModel
@@ -17,7 +13,6 @@ class VidVideosAdapter() : RecyclerView.Adapter<VidVideosAdapter.VideoHolder>() 
     private var videos: ArrayList<VidVideoModel> = ArrayList()
 
     fun addVideos(videosList: List<VidVideoModel>) {
-        Log.d("LUULTEST", "$videosList added ")
         val initPosition = videos.size - 1
         videos.addAll(videosList)
         notifyItemRangeChanged(initPosition, videos.size)

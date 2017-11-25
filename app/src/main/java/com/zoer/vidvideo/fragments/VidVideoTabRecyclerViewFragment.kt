@@ -24,7 +24,7 @@ import com.zoer.vidvideo.models.VidVideosModel
 import kotlinx.android.synthetic.main.fragment_vid_video_recycler_view.*
 import rx.schedulers.Schedulers
 
-open class VidVideoTabRecyclerViewFragment : Fragment() {
+open class VidVideoTabRecyclerViewFragment : BaseContainerFragment() {
     protected val videosManager by lazy { VidMeVideosManager() }
     protected var vidVideos: VidVideosModel? = null  //IMPORTANT
 
@@ -44,13 +44,12 @@ open class VidVideoTabRecyclerViewFragment : Fragment() {
                 vid_video_recycler,
                 object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View?, position: Int) {
-                        Toast.makeText(context, (vid_video_recycler.adapter as VidVideosAdapter).getVideos()[position].videoUrl, Toast.LENGTH_LONG).show()
-                        Log.d(TAG,(vid_video_recycler.adapter as VidVideosAdapter).getVideos()[position].videoUrl)
+                        Log.d(TAG, (vid_video_recycler.adapter as VidVideosAdapter).getVideos()[position].videoUrl)
                         startActivity(Intent(activity, VideoActivity::class.java).putExtra("complete_url", (vid_video_recycler.adapter as VidVideosAdapter).getVideos()[position].videoUrl))
                     }
 
                     override fun onLongItemClick(view: View?, position: Int) {
-//                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        Toast.makeText(context, (vid_video_recycler.adapter as VidVideosAdapter).getVideos()[position].videoUrl, Toast.LENGTH_LONG).show()
                     }
 
                 }
@@ -81,21 +80,20 @@ open class VidVideoTabRecyclerViewFragment : Fragment() {
         Log.d(TAG, "Attached")
 
         if (context is OnFragmentInteractionListener) {
-            mListener = context as OnFragmentInteractionListener?
+            mListener = context
         } else {
-            throw RuntimeException((context!!.toString() + " must implement OnFragmentInteractionListener")) as Throwable
+            throw RuntimeException((context!!.toString() + " must implement OnFragmentInteractionListener"))
         }
     }
 
     override fun onDetach() {
         super.onDetach()
         mListener = null
-
         Log.d(TAG, "Deatached")
     }
 
-    protected open fun requestVideo(tabType: TabType = TabType.FEATURED, token: String="token") {
-        videosManager.getVideos(vidVideos?.getAfter() ?: 0, tabtype = tabType,accessToken=token)
+    protected open fun requestVideo(tabType: TabType = TabType.FEATURED, token: String = "token") {
+        videosManager.getVideos(vidVideos?.getAfter() ?: 0, tabtype = tabType, accessToken = token)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         { retrivedVideos ->
@@ -103,7 +101,7 @@ open class VidVideoTabRecyclerViewFragment : Fragment() {
                             (vid_video_recycler.adapter as VidVideosAdapter).addVideos(retrivedVideos.videos)
                         },
                         { e ->
-                            Log.d(TAG,e.message)
+                            Log.d(TAG, e.message)
                         }
                 )
     }
@@ -120,7 +118,7 @@ open class VidVideoTabRecyclerViewFragment : Fragment() {
     }
 
     companion object {
-        val TAG = ""
+        val TAG = "VidVideoTab"
 
 
     }

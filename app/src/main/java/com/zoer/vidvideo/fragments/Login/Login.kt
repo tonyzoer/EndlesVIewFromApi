@@ -12,6 +12,8 @@ import android.widget.Toast
 
 import com.zoer.vidvideo.R
 import com.zoer.vidvideo.features.VidMeUserManager
+import com.zoer.vidvideo.fragments.BaseContainerFragment
+import com.zoer.vidvideo.fragments.FeedTab.FeedVideosTab
 import com.zoer.vidvideo.models.VidMeUserModel
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.view.*
@@ -25,7 +27,7 @@ import rx.schedulers.Schedulers
  * Use the [Login.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Login : Fragment(), View.OnClickListener {
+class Login : BaseContainerFragment(), View.OnClickListener {
     private var mListener: OnFragmentInteractionListener? = null
     private val userManager by lazy { VidMeUserManager() }
     private var userModel: VidMeUserModel? = null
@@ -68,13 +70,14 @@ class Login : Fragment(), View.OnClickListener {
         }
     }
 
-    fun login() {
+    private fun login() {
         userManager.getUser(username.text.toString(), password.text.toString())
                 .subscribeOn(Schedulers.io())
                 .subscribe({ user ->
                     userModel = user
                     activity.getSharedPreferences("pref", Context.MODE_PRIVATE).edit().putString("token", user.token).apply()
                     Log.d(TAG, "token= ${user.token}")
+                    replaceFragment(FeedVideosTab(),false)
                 },
                         { err ->
                             Log.d(TAG, "user not logined")
@@ -83,12 +86,12 @@ class Login : Fragment(), View.OnClickListener {
 
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
+        fun onFragmentInteraction(uri: Uri )
     }
 
     companion object {
         val TAG = this.javaClass.simpleName
-        fun newInstance(param1: String, param2: String): Login {
+        fun newInstance(): Login {
             val fragment = Login()
             return fragment
         }

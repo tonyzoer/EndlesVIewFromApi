@@ -11,7 +11,7 @@ import retrofit2.http.Query
  */
 interface VidVideoApi {
     @GET("/videos/featured")
-    fun getTopFeatured(@Query("offset") offset: String, @Query("limit") limit: String): Call<VidMeVideosResponse>
+    fun getTopFeatured(@Query("offset") offset: String, @Query("limit") limit: String, @Query("token") token: String): Call<VidMeVideosResponse>
 
     @GET("/videos/hot")
     fun getTopHot(@Query("offset") offset: String, @Query("limit") limit: String): Call<VidMeVideosResponse>
