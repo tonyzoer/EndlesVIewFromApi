@@ -80,7 +80,7 @@ class Login : BaseContainerFragment(), View.OnClickListener {
                     replaceFragment(FeedVideosTab(),false)
                 },
                         { err ->
-                            Log.d(TAG, "user not logined")
+                            err.printStackTrace()
                         })
     }
 

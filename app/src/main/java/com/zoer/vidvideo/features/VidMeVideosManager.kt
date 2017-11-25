@@ -2,6 +2,7 @@ package com.zoer.vidvideo.features
 
 import com.zoer.vidvideo.api.RestApi
 import com.zoer.vidvideo.commons.TabType
+import com.zoer.vidvideo.models.Format
 import com.zoer.vidvideo.models.VidVideoModel
 import com.zoer.vidvideo.models.VidVideosModel
 import rx.Observable
@@ -18,7 +19,7 @@ class VidMeVideosManager(private val api: RestApi = RestApi()) {
             val callResponse = when (tabtype) {
                 TabType.FEED -> api.getFeed(offset.toString(), limit.toString(), accessToken)
                 TabType.HOT -> api.getHot(offset.toString(), limit.toString())
-                TabType.FEATURED -> api.getFeatured(offset.toString(), limit.toString(),accessToken)
+                TabType.FEATURED -> api.getFeatured(offset.toString(), limit.toString(), accessToken)
             }
             val response = callResponse.execute()
 
@@ -26,7 +27,7 @@ class VidMeVideosManager(private val api: RestApi = RestApi()) {
             if (response.isSuccessful) {
                 val dataResponse = response.body()!!
                 val videos = dataResponse.videos.map {
-                    VidVideoModel(it.video_id, it.title, it.thumbnail, it.complete_url, it.score)
+                    VidVideoModel(it.video_id, it.title, it.thumbnail, it.complete_url, it.score, it.formats.map { Format(it.type, it.uri, it.version) })
                 }
                 val vidVideos = VidVideosModel(dataResponse.page.offset, dataResponse.page.limit, videos)
                 subscriber.onNext(vidVideos)

@@ -15,7 +15,6 @@ open class BaseContainerFragment: Fragment() {
         }
         transaction.replace(R.id.root_frame, fragment)
         transaction.commit()
-        childFragmentManager.executePendingTransactions()
     }
 
     private val TAG: String = "BaseActivity"

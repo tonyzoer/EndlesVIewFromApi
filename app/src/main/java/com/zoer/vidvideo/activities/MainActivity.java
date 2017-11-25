@@ -125,12 +125,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
     @Override
     public void onFragmentInteraction(@NotNull Uri uri) {
-        String[] frags= uri.toString().split("-");
-        if (frags[0].equals("login")){
-            if(frags[1].equals("feed")){
-
-            }
-        }
     }
 
 }

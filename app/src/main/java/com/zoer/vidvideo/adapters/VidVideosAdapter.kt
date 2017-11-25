@@ -38,8 +38,14 @@ class VidVideosAdapter() : RecyclerView.Adapter<VidVideosAdapter.VideoHolder>() 
     }
 
 
+    fun clear() {
+        videos.clear()
+        notifyDataSetChanged()
+    }
+
     class VideoHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
         private var model: VidVideoModel? = null
+
         private var view = v
 
         init {
@@ -49,17 +55,16 @@ class VidVideosAdapter() : RecyclerView.Adapter<VidVideosAdapter.VideoHolder>() 
         fun bindVidVideoModel(video: VidVideoModel) {
             model = video
             view.title.text = video.title
-            view.likes_count.text = video.score.toString()
+            view.likes_count.text = "${video.score} like"
             view.video_preview.loadImg("https://api.vid.me/video/${video.id}/thumbnail")
         }
+
 
         override fun onClick(p0: View) {
 
         }
 
-
     }
-
 
 
 }

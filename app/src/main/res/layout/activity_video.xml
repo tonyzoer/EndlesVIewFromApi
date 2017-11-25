@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context="com.zoer.vidvideo.activities.VideoActivity">
+    tools:context="com.zoer.vidvideo.activities.VideoActivity"
+    android:keepScreenOn="true">
 
     <com.google.android.exoplayer2.ui.SimpleExoPlayerView
         android:id="@+id/player_view"

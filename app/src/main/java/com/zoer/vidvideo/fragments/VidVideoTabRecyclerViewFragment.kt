@@ -45,7 +45,7 @@ open class VidVideoTabRecyclerViewFragment : BaseContainerFragment() {
                 object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View?, position: Int) {
                         Log.d(TAG, (vid_video_recycler.adapter as VidVideosAdapter).getVideos()[position].videoUrl)
-                        startActivity(Intent(activity, VideoActivity::class.java).putExtra("complete_url", (vid_video_recycler.adapter as VidVideosAdapter).getVideos()[position].videoUrl))
+                        startActivity(Intent(activity, VideoActivity::class.java).putExtra("video", (vid_video_recycler.adapter as VidVideosAdapter).getVideos()[position]))
                     }
 
                     override fun onLongItemClick(view: View?, position: Int) {
@@ -54,10 +54,22 @@ open class VidVideoTabRecyclerViewFragment : BaseContainerFragment() {
 
                 }
         ))
+        swipeRefreshLayout.setOnRefreshListener { refreshRecycler() }
         initAdapter()
         if (savedInstanceState == null) {
             requestVideo()
         }
+    }
+
+    private fun refreshRecycler() {
+        (vid_video_recycler.adapter as VidVideosAdapter).clear()
+        vidVideos=null
+        requestVideo()
+        onItemsLoadComplete()
+    }
+
+    fun onItemsLoadComplete(){
+        swipeRefreshLayout.isRefreshing=false
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,

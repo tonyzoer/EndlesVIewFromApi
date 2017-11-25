@@ -19,14 +19,7 @@ class AppSectionsPagerAdapter(fm: FragmentManager, val context: Context) : Fragm
         return when (i) {
             0 -> FeaturedVideosTab()
             1 -> HotVidVideosTab()
-            2 -> {
-                val token = context.getSharedPreferences("pref", Context.MODE_PRIVATE).getString("token", "token")
-                if (!token.equals("token")) {
-                    FeedVideosTab()
-                } else {
-                    LoginRootFragment.newInstance()
-                }
-            }
+            2 -> LoginRootFragment()
             else -> {
                 val fragment = DummySection()
                 val args = Bundle()

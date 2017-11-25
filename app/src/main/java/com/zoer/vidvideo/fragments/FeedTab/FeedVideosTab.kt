@@ -15,10 +15,11 @@ import rx.schedulers.Schedulers
 class FeedVideosTab:VidVideoTabRecyclerViewFragment() {
     override fun requestVideo(tabType: TabType,token:String) {
         val token= context.getSharedPreferences("pref", Context.MODE_PRIVATE).getString("token","token")
-        videosManager.getVideos(vidVideos?.getAfter() ?: 0, tabtype = tabType, accessToken = token)
+        videosManager.getVideos(vidVideos?.getAfter() ?: 0, tabtype = TabType.FEED, accessToken = token)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         { retrivedVideos ->
+                            Log.d(TAG,token)
                             vidVideos = retrivedVideos
                             (vid_video_recycler.adapter as VidVideosAdapter).addVideos(retrivedVideos.videos)
                         },
@@ -28,6 +29,7 @@ class FeedVideosTab:VidVideoTabRecyclerViewFragment() {
                         }
                 )
     }
+
     companion object {
         val TAG = "FeedTab"
 

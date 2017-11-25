@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/border">
+    android:background="@drawable/border"
+    >
 
     <ImageView
         android:id="@+id/video_preview"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:minHeight="250dp"
+        android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,7 +36,7 @@
 
     <TextView
         android:id="@+id/likes_count"
-        android:layout_width="37dp"
+        android:layout_width="87dp"
         android:layout_height="28dp"
         android:layout_marginBottom="25dp"
         android:layout_marginEnd="12dp"
