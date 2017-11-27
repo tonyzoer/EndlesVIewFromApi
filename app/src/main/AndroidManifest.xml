@@ -21,9 +21,6 @@
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <data
-                    android:host="callback"
-                    android:scheme="vidvideoprotocol" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
