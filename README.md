@@ -1,5 +1,5 @@
 # Endless Recycler View from Api
-Used Techs: 
+Used technologies: 
 
 1.Retrofit
 
